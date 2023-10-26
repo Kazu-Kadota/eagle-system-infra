@@ -2,20 +2,20 @@ variable "certificate" {
   type = map(any)
 
   default = {
-    sdx    = "sdx.eaglesystem.com.br"
-    prd    = "eaglesystem.com.br"
+    sdx    = "sdx.systemeagle.com.br"
+    prd    = "systemeagle.com.br"
   }
 }
 
 variable "alternative_names" {
   default = {
     sdx = [
-      "*.sdx.eaglesystem.com.br",
-      "*.api.sdx.eaglesystem.com.br",
+      "*.sdx.systemeagle.com.br",
+      "*.api.sdx.systemeagle.com.br",
     ]
     prd = [
-      "*.eaglesystem.com.br",
-      "*.api.eaglesystem.com.br",
+      "*.systemeagle.com.br",
+      "*.api.systemeagle.com.br",
     ]
   }
 }

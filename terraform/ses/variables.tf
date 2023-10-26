@@ -6,8 +6,8 @@ variable "route53_zone_map" {
   type = map(string)
 
   default = {
-    sdx = "sdx.eaglesystem.com.br."
-    prd = "eaglesystem.com.br."
+    sdx = "sdx.systemeagle.com.br."
+    prd = "systemeagle.com.br."
   }
 }
 
@@ -15,8 +15,8 @@ variable "email_name_map" {
   type = map(string)
 
   default = {
-    sdx = "sdx.admin@eaglesystem.com.br"
-    prd = "admin@eaglesystem.com.br"
+    sdx = "sdx.admin@systemeagle.com.br"
+    prd = "admin@systemeagle.com.br"
   }
 }
 
@@ -24,8 +24,8 @@ variable "email_domain_name_map" {
   type = map(string)
 
   default = {
-    sdx = "sdx.eaglesystem.com.br"
-    prd = "eaglesystem.com.br"
+    sdx = "sdx.systemeagle.com.br"
+    prd = "systemeagle.com.br"
   }
 }
 

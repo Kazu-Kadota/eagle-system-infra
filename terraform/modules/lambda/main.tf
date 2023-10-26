@@ -10,7 +10,7 @@ resource "aws_lambda_function" "main" {
   handler                        = var.handler == "" ? "src/${var.name}.handler" : var.handler
   runtime                        = var.runtime
   s3_bucket                      = var.source_bucket
-  s3_key                         = "deploy/${var.project}-${terraform.workspace}/latest.zip"
+  s3_key                         = "deploy/${var.name}-${terraform.workspace}/latest.zip"
   timeout                        = var.timeout
   memory_size                    = var.memory_size
   layers                         = var.layers

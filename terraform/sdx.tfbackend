@@ -1,0 +1,4 @@
+bucket = "eagleinfra-sdx"
+region = "us-east-1"
+encrypt = "true"
+profile = "eagle-back-sdx"

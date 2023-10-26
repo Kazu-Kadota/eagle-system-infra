@@ -1,0 +1,21 @@
+{
+  "type": "apigateway",
+  "requestId": "$context.requestId",
+  "ip": "$context.identity.sourceIp",
+  "caller": "$context.identity.caller",
+  "user": "$context.identity.user",
+  "requestTime": "$context.requestTime",
+  "httpMethod": "$context.httpMethod",
+  "resourcePath": "$context.resourcePath",
+  "status": "$context.status",
+  "protocol": "$context.protocol",
+  "responseLength": "$context.responseLength",
+  "responseLatency": "$context.responseLatency",
+  "errorMessage": "$context.error.message",
+  "userAgent": "$context.identity.userAgent",
+  "domainName": "$context.domainName",
+  "url": "https://${domain_name}$context.resourcePath",
+  "service": "${project}",
+  "userId": "$context.authorizer.user_id",
+  "userType": "$context.authorizer.user_type"
+}

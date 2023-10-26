@@ -13,7 +13,7 @@ output "aws_profile" {
 }
 
 output "domain_name" {
-  value = "api.eaglesystem.com.br"
+  value = "api.systemeagle.com.br"
 }
 
 output "source_bucket" {

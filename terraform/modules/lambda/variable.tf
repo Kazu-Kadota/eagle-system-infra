@@ -16,7 +16,7 @@ variable "policy_json" {
 
 variable "environment_variables" {
   default = {
-    EAGLESYSTEM = "1"
+    SYSTEMEAGLE = "1"
   }
 }
 

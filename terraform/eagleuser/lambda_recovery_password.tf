@@ -60,6 +60,6 @@ module "lambda_recovery_password" {
     DYNAMO_TABLE_EAGLEUSER_USER              = aws_dynamodb_table.users.name
     DYNAMO_TABLE_EAGLEUSER_RECOVERY_PASSWORD = aws_dynamodb_table.recovery_password.name
     USER_RECOVERY_KEY_URL                 = "${local.url_name}/redefinir-senha"
-    EAGLESYSTEM_EMAIL                        = local.source_email_name
+    SYSTEMEAGLE_EMAIL                        = local.source_email_name
   }
 }

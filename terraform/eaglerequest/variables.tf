@@ -6,8 +6,8 @@ variable "route53_zone_map" {
   type = map(string)
 
   default = {
-    sdx = "sdx.eaglesystem.com.br."
-    prd = "eaglesystem.com.br."
+    sdx = "sdx.systemeagle.com.br."
+    prd = "systemeagle.com.br."
   }
 }
 
@@ -15,8 +15,8 @@ variable "domain_name_map" {
   type = map(string)
 
   default = {
-    sdx = "request.api.sdx.eaglesystem.com.br"
-    prd = "request.api.eaglesystem.com.br"
+    sdx = "request.api.sdx.systemeagle.com.br"
+    prd = "request.api.systemeagle.com.br"
   }
 }
 

@@ -78,6 +78,7 @@ resource "aws_api_gateway_deployment" "main" {
     module.method_options_analysis_person,
     module.method_options_analysis_vehicle_get_vehicle,
     module.method_options_analysis_vehicle_plate_history,
+    module.method_options_analysis_vehicle_second_driver,
     module.method_options_analysis_vehicle,
     module.method_options_analysis,
     module.method_options_query_analysis_by_document_plate,
@@ -85,6 +86,7 @@ resource "aws_api_gateway_deployment" "main" {
     module.method_post_analysis_combo,
     module.method_post_analysis_person,
     module.method_post_analysis_vehicle_plate_history,
+    module.method_post_analysis_vehicle_second_driver,
     module.method_post_analysis_vehicle,
   ]
 

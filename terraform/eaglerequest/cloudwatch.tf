@@ -69,3 +69,21 @@ resource "aws_cloudwatch_log_group" "lambda_query_analysis_by_document_plate" {
     Service = var.project
   }
 }
+
+resource "aws_cloudwatch_log_group" "lambda_analysis_vehicle_plate_history" {
+  name              = "/aws/lambda/${var.project}-analysis-vehicle-plate-history-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_analysis_vehicle_second_driver" {
+  name              = "/aws/lambda/${var.project}-analysis-vehicle-second-driver-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}

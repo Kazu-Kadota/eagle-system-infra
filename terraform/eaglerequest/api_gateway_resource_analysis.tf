@@ -116,3 +116,30 @@ module "method_post_analysis_vehicle_plate_history" {
   resource_id = aws_api_gateway_resource.analysis_vehicle_plate_history.id
   rest_api_id = aws_api_gateway_rest_api.main.id
 }
+
+# /analysis/vehicle/second-driver
+resource "aws_api_gateway_resource" "analysis_vehicle_second_driver" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  parent_id   = aws_api_gateway_resource.analysis_vehicle.id
+  path_part   = "second-driver"
+}
+
+# OPTIONS /analysis/vehicle/second-driver
+module "method_options_analysis_vehicle_second_driver" {
+  source      = "../modules/api_gateway_options"
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  resource_id = aws_api_gateway_resource.analysis_vehicle_second_driver.id
+}
+
+# POST /analysis/vehicle/second-driver
+module "method_post_analysis_vehicle_second_driver" {
+  source        = "../modules/api_gateway_lambda"
+  account_id    = module.global_variables.account_id
+  authorization = "NONE"
+  # authorizer_id = aws_api_gateway_authorizer.auth.id
+  aws_region  = module.global_variables.aws_region
+  http_method = "POST"
+  lambda_arn  = module.lambda_analysis_vehicle_second_driver.arn
+  resource_id = aws_api_gateway_resource.analysis_vehicle_second_driver.id
+  rest_api_id = aws_api_gateway_rest_api.main.id
+}

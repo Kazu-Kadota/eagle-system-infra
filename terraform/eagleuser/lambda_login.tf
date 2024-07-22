@@ -29,6 +29,17 @@ data "aws_iam_policy_document" "login" {
       "${aws_dynamodb_table.users.arn}/index/*"
     ]
   }
+
+  statement {
+    actions = [
+      "dynamodb:Query",
+    ]
+
+    resources = [
+      aws_dynamodb_table.company.arn,
+      "${aws_dynamodb_table.company.arn}/index/*"
+    ]
+  }
 }
 
 module "lambda_login" {
@@ -40,7 +51,8 @@ module "lambda_login" {
   handler       = "src/controllers/${var.project}/login/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY   = data.aws_ssm_parameter.auth_ecdsa_private_key.value
-    DYNAMO_TABLE_EAGLEUSER_USER = aws_dynamodb_table.users.name
+    AUTH_ES256_PRIVATE_KEY         = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    DYNAMO_TABLE_EAGLEUSER_USER    = aws_dynamodb_table.users.name
+    DYNAMO_TABLE_EAGLEUSER_COMPANY = aws_dynamodb_table.company.name
   }
 }

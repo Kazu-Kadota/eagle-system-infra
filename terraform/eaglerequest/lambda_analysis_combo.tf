@@ -83,6 +83,27 @@ data "aws_iam_policy_document" "analysis_combo" {
       "${aws_dynamodb_table.analysis_vehicle.arn}/index/*"
     ]
   }
+
+  statement {
+    actions = [
+      "dynamodb:Query",
+    ]
+
+    resources = [
+      data.terraform_remote_state.eagleuser.outputs.dynamodb_company_arn,
+      "${data.terraform_remote_state.eagleuser.outputs.dynamodb_company_arn}/index/*"
+    ]
+  }
+
+  statement {
+    actions = [
+      "dynamodb:GetItem",
+    ]
+
+    resources = [
+      data.terraform_remote_state.eagleuser.outputs.dynamodb_feature_flag_arn,
+    ]
+  }
 }
 
 module "lambda_analysis_combo" {
@@ -94,10 +115,12 @@ module "lambda_analysis_combo" {
   handler       = "src/controllers/${var.project}/send-request-analysis/combo/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY                  = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    AUTH_ES256_PRIVATE_KEY                     = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_PERSON  = aws_dynamodb_table.analysis_person.name
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_VEHICLE = aws_dynamodb_table.analysis_vehicle.name
     DYNAMO_TABLE_EAGLEANALYSIS_PEOPLE          = data.terraform_remote_state.eagleanalysis.outputs.dynamodb_people_name
     DYNAMO_TABLE_EAGLEANALYSIS_VEHICLES        = data.terraform_remote_state.eagleanalysis.outputs.dynamodb_vehicles_name
+    DYNAMO_TABLE_EAGLEUSER_COMPANY             = data.terraform_remote_state.eagleuser.outputs.dynamodb_company_name
+    DYNAMO_TABLE_EAGLEUSER_FEATURE_FLAG        = data.terraform_remote_state.eagleuser.outputs.dynamodb_feature_flag_name
   }
 }

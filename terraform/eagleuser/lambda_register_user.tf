@@ -51,7 +51,7 @@ module "lambda_register_user" {
   handler       = "src/controllers/${var.project}/register/user/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY   = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    AUTH_ES256_PRIVATE_KEY      = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEUSER_USER = aws_dynamodb_table.users.name
   }
 }

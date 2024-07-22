@@ -62,7 +62,7 @@ module "lambda_analysis_vehicle_default" {
   handler       = "src/controllers/${var.project}/send-request-analysis/vehicle/default/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY                  = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    AUTH_ES256_PRIVATE_KEY                     = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_VEHICLE = aws_dynamodb_table.analysis_vehicle.name
     DYNAMO_TABLE_EAGLEANALYSIS_VEHICLES        = data.terraform_remote_state.eagleanalysis.outputs.dynamodb_vehicles_name
   }

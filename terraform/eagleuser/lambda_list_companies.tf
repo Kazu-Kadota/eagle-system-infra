@@ -40,7 +40,7 @@ module "lambda_list_companies" {
   handler       = "src/controllers/${var.project}/list-companies/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY      = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    AUTH_ES256_PRIVATE_KEY         = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEUSER_COMPANY = aws_dynamodb_table.company.name
   }
 }

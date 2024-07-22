@@ -25,6 +25,15 @@ resource "aws_cloudwatch_log_group" "register_user" {
   }
 }
 
+resource "aws_cloudwatch_log_group" "my_company" {
+  name              = "/aws/lambda/${var.project}-my-company-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
 resource "aws_cloudwatch_log_group" "register_company" {
   name              = "/aws/lambda/${var.project}-register-company-${terraform.workspace}"
   retention_in_days = "60"
@@ -63,6 +72,24 @@ resource "aws_cloudwatch_log_group" "recovery_password" {
 
 resource "aws_cloudwatch_log_group" "reset_password" {
   name              = "/aws/lambda/${var.project}-reset-password-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "feature_flag_set" {
+  name              = "/aws/lambda/${var.project}-feature-flag-set-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "feature_flag_modify_allowance" {
+  name              = "/aws/lambda/${var.project}-feature-flag-modify-allowance-${terraform.workspace}"
   retention_in_days = "60"
 
   tags = {

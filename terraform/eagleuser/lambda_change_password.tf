@@ -38,7 +38,7 @@ module "lambda_change_password" {
   handler       = "src/controllers/${var.project}/change-password/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY   = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    AUTH_ES256_PRIVATE_KEY      = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEUSER_USER = aws_dynamodb_table.users.name
   }
 }

@@ -50,7 +50,7 @@ module "lambda_get_person" {
   handler       = "src/controllers/${var.project}/consult/analysis/get-person/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY                          = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    AUTH_ES256_PRIVATE_KEY                             = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_PERSON          = aws_dynamodb_table.analysis_person.name
     DYNAMO_TABLE_EAGLEREQUEST_FINISHED_ANALYSIS_PERSON = aws_dynamodb_table.finished_analysis_person.name
   }

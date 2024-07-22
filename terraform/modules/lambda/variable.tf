@@ -45,7 +45,7 @@ variable "layers" {
 }
 
 variable "runtime" {
-  default = "nodejs16.x"
+  default = "nodejs20.x"
 }
 
 variable "concurrent_executions" {

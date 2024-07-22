@@ -12,6 +12,18 @@ data "terraform_remote_state" "eagleauth" {
   }
 }
 
+data "terraform_remote_state" "eagleuser" {
+  backend   = "s3"
+  workspace = terraform.workspace
+
+  config = {
+    key     = "terraform/eagleuser/terraform.tfstate"
+    region  = "${module.global_variables.state_region}"
+    bucket  = "${module.global_variables.state_bucket}"
+    profile = "${module.global_variables.aws_profile}"
+  }
+}
+
 data "terraform_remote_state" "acm" {
   backend   = "s3"
   workspace = terraform.workspace

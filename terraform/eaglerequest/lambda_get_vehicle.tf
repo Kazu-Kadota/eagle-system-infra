@@ -50,7 +50,7 @@ module "lambda_get_vehicle" {
   handler       = "src/controllers/${var.project}/consult/analysis/get-vehicle/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY                           = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    AUTH_ES256_PRIVATE_KEY                              = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_VEHICLE          = aws_dynamodb_table.analysis_vehicle.name
     DYNAMO_TABLE_EAGLEREQUEST_FINISHED_ANALYSIS_VEHICLE = aws_dynamodb_table.finished_analysis_vehicle.name
   }

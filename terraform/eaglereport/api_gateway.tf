@@ -67,6 +67,10 @@ resource "aws_api_gateway_deployment" "main" {
     module.method_options_analysis_path_type,
     module.method_post_analysis_path_type,
   ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_api_gateway_gateway_response" "error_unauthorized" {

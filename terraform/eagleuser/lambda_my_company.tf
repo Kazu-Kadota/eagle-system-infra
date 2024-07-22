@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "register_company" {
+data "aws_iam_policy_document" "my_company" {
   statement {
     actions = [
       "logs:CreateLogGroup",
@@ -22,36 +22,36 @@ data "aws_iam_policy_document" "register_company" {
 
   statement {
     actions = [
-      "dynamodb:Query",
-    ]
-
-    resources = [
-      aws_dynamodb_table.company.arn,
-      "${aws_dynamodb_table.company.arn}/index/*"
-    ]
-  }
-
-  statement {
-    actions = [
-      "dynamodb:PutItem"
+      "dynamodb:GetItem",
     ]
 
     resources = [
       aws_dynamodb_table.company.arn
     ]
   }
+
+  statement {
+    actions = [
+      "dynamodb:Scan"
+    ]
+
+    resources = [
+      aws_dynamodb_table.feature_flag.arn
+    ]
+  }
 }
 
-module "lambda_register_company" {
+module "lambda_my_company" {
   source        = "../modules/lambda"
-  name          = "${var.project}-register-company"
+  name          = "${var.project}-my-company"
   source_bucket = module.global_variables.source_bucket
   project       = var.project
-  policy_json   = data.aws_iam_policy_document.register_company.json
-  handler       = "src/controllers/${var.project}/register/company/index.handler"
+  policy_json   = data.aws_iam_policy_document.my_company.json
+  handler       = "src/controllers/${var.project}/my-company/index.handler"
 
   environment_variables = {
-    AUTH_ES256_PRIVATE_KEY         = data.aws_ssm_parameter.auth_ecdsa_private_key.value
-    DYNAMO_TABLE_EAGLEUSER_COMPANY = aws_dynamodb_table.company.name
+    AUTH_ES256_PRIVATE_KEY              = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+    DYNAMO_TABLE_EAGLEUSER_COMPANY      = aws_dynamodb_table.company.name
+    DYNAMO_TABLE_EAGLEUSER_FEATURE_FLAG = aws_dynamodb_table.feature_flag.name
   }
 }

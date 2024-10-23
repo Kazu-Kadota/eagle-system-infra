@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "my_company" {
 
   statement {
     actions = [
-      "dynamodb:Scan"
+      "dynamodb:Query"
     ]
 
     resources = [

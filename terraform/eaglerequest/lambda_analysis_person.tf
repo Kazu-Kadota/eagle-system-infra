@@ -1,4 +1,5 @@
 data "aws_iam_policy_document" "analysis_person" {
+  source_policy_documents = [data.aws_iam_policy_document.use_case_publish_techmize_sns_topic_person.json]
   statement {
     actions = [
       "logs:CreateLogGroup",
@@ -66,10 +67,12 @@ data "aws_iam_policy_document" "analysis_person" {
   statement {
     actions = [
       "dynamodb:GetItem",
+      "dynamodb:Query",
     ]
 
     resources = [
       data.terraform_remote_state.eagleuser.outputs.dynamodb_feature_flag_arn,
+      "${data.terraform_remote_state.eagleuser.outputs.dynamodb_feature_flag_arn}/index/*"
     ]
   }
 }
@@ -82,11 +85,15 @@ module "lambda_analysis_person" {
   policy_json   = data.aws_iam_policy_document.analysis_person.json
   handler       = "src/controllers/${var.project}/send-request-analysis/person/index.handler"
 
-  environment_variables = {
-    AUTH_ES256_PRIVATE_KEY                    = data.aws_ssm_parameter.auth_ecdsa_private_key.value
-    DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_PERSON = aws_dynamodb_table.analysis_person.name
-    DYNAMO_TABLE_EAGLEANALYSIS_PEOPLE         = data.terraform_remote_state.eagleanalysis.outputs.dynamodb_people_name
-    DYNAMO_TABLE_EAGLEUSER_COMPANY            = data.terraform_remote_state.eagleuser.outputs.dynamodb_company_name
-    DYNAMO_TABLE_EAGLEUSER_FEATURE_FLAG       = data.terraform_remote_state.eagleuser.outputs.dynamodb_feature_flag_name
-  }
+  environment_variables = merge(
+    local.use_case_publish_techimze_sns_topic_person_environment_variables,
+    local.service_techmize_v2_custom_request_environment_variables,
+    {
+      AUTH_ES256_PRIVATE_KEY                    = data.aws_ssm_parameter.auth_ecdsa_private_key.value
+      DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_PERSON = aws_dynamodb_table.analysis_person.name
+      DYNAMO_TABLE_EAGLEANALYSIS_PEOPLE         = data.terraform_remote_state.eagleanalysis.outputs.dynamodb_people_name
+      DYNAMO_TABLE_EAGLEUSER_COMPANY            = data.terraform_remote_state.eagleuser.outputs.dynamodb_company_name
+      DYNAMO_TABLE_EAGLEUSER_FEATURE_FLAG       = data.terraform_remote_state.eagleuser.outputs.dynamodb_feature_flag_name
+    }
+  )
 }

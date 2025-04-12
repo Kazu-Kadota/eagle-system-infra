@@ -85,7 +85,7 @@ module "lambda_analysis_vehicle_antt" {
 
   environment_variables = merge(
     local.use_case_publish_techimze_sns_topic_vehicle_environment_variables,
-    local.service_techmize_v2_custom_request_environment_variables,
+    local.service_techmize_new_v1_store_request_environment_variables,
     {
       AUTH_ES256_PRIVATE_KEY                     = data.aws_ssm_parameter.auth_ecdsa_private_key.value
       DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_VEHICLE = aws_dynamodb_table.analysis_vehicle.name

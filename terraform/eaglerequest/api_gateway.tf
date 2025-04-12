@@ -103,7 +103,7 @@ resource "aws_api_gateway_gateway_response" "error_unauthorized" {
   response_type = "UNAUTHORIZED"
 
   response_parameters = {
-    "gatewayresponse.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,x-realm,x-device-token,x-sf-token,x-mpdo-token'",
+    "gatewayresponse.header.Access-Control-Allow-Headers" = "'Content-Type,Content-Encoding,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,Transfer-Encoding'",
     "gatewayresponse.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT,PATCH'",
     "gatewayresponse.header.Access-Control-Allow-Origin"  = "'*'"
   }

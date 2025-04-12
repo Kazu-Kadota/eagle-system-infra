@@ -106,7 +106,115 @@ resource "aws_cloudwatch_log_group" "lambda_analysis_vehicle_basic_data" {
   }
 }
 
-resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_person_basic_data" {
+resource "aws_cloudwatch_log_group" "sfn_techmize_new_v1_person_basic_data" {
+  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-new-v1-person-basic-data-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "pipe_techmize_new_v1_person_basic_data" {
+  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-new-v1-person-basic-data-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "sfn_techmize_new_v1_person_cnh_basic" {
+  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-new-v1-person-cnh-basic-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "pipe_techmize_new_v1_person_cnh_basic" {
+  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-new-v1-person-cnh-basic-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "sfn_techmize_new_v1_person_cnh_status" {
+  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-new-v1-person-cnh-status-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "pipe_techmize_new_v1_person_cnh_status" {
+  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-new-v1-person-cnh-status-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "sfn_techmize_new_v1_person_process" {
+  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-new-v1-person-process-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "pipe_techmize_new_v1_person_process" {
+  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-new-v1-person-process-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "sfn_techmize_new_v1_vehicle_antt" {
+  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-new-v1-vehicle-antt-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "pipe_techmize_new_v1_vehicle_antt" {
+  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-new-v1-vehicle-antt-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "sfn_techmize_new_v1_vehicle_basic_data" {
+  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-new-v1-vehicle-basic-data-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "pipe_techmize_new_v1_vehicle_basic_data" {
+  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-new-v1-vehicle-basic-data-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_worker_techmize_new_v1_answer_analysis_person_basic_data" {
   name              = "/aws/lambda/${var.project}-worker-answer-analysis-person-basic-data-${terraform.workspace}"
   retention_in_days = "60"
 
@@ -115,7 +223,7 @@ resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_p
   }
 }
 
-resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_person_cnh" {
+resource "aws_cloudwatch_log_group" "lambda_worker_techmize_new_v1_answer_analysis_person_cnh" {
   name              = "/aws/lambda/${var.project}-worker-answer-analysis-person-cnh-${terraform.workspace}"
   retention_in_days = "60"
 
@@ -124,7 +232,7 @@ resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_p
   }
 }
 
-resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_person_cnh_v2" {
+resource "aws_cloudwatch_log_group" "lambda_worker_techmize_new_v1_answer_analysis_person_cnh_v2" {
   name              = "/aws/lambda/${var.project}-worker-answer-analysis-person-cnh-v2-${terraform.workspace}"
   retention_in_days = "60"
 
@@ -133,7 +241,7 @@ resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_p
   }
 }
 
-resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_person_process" {
+resource "aws_cloudwatch_log_group" "lambda_worker_techmize_new_v1_answer_analysis_person_process" {
   name              = "/aws/lambda/${var.project}-worker-answer-analysis-person-process-${terraform.workspace}"
   retention_in_days = "60"
 
@@ -142,7 +250,7 @@ resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_p
   }
 }
 
-resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_vehicle_antt" {
+resource "aws_cloudwatch_log_group" "lambda_worker_techmize_new_v1_answer_analysis_vehicle_antt" {
   name              = "/aws/lambda/${var.project}-worker-answer-analysis-vehicle-antt-${terraform.workspace}"
   retention_in_days = "60"
 
@@ -151,116 +259,8 @@ resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_v
   }
 }
 
-resource "aws_cloudwatch_log_group" "lambda_worker_techmize_v2_answer_analysis_vehicle_basic_data" {
+resource "aws_cloudwatch_log_group" "lambda_worker_techmize_new_v1_answer_analysis_vehicle_basic_data" {
   name              = "/aws/lambda/${var.project}-worker-answer-analysis-vehicle-basic-data-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "sfn_techmize_v2_person_basic_data" {
-  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-v2-person-basic-data-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "pipe_techmize_v2_person_basic_data" {
-  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-v2-person-basic-data-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "sfn_techmize_v2_person_cnh_basic" {
-  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-v2-person-cnh-basic-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "pipe_techmize_v2_person_cnh_basic" {
-  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-v2-person-cnh-basic-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "sfn_techmize_v2_person_cnh_status" {
-  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-v2-person-cnh-status-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "pipe_techmize_v2_person_cnh_status" {
-  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-v2-person-cnh-status-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "sfn_techmize_v2_person_process" {
-  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-v2-person-process-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "pipe_techmize_v2_person_process" {
-  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-v2-person-process-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "sfn_techmize_v2_vehicle_antt" {
-  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-v2-vehicle-antt-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "pipe_techmize_v2_vehicle_antt" {
-  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-v2-vehicle-antt-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "sfn_techmize_v2_vehicle_basic_data" {
-  name              = "/aws/vendedlogs/states/${var.project}-sfn-techmize-v2-vehicle-basic-data-${terraform.workspace}"
-  retention_in_days = "60"
-
-  tags = {
-    Service = var.project
-  }
-}
-
-resource "aws_cloudwatch_log_group" "pipe_techmize_v2_vehicle_basic_data" {
-  name              = "/aws/vendedlogs/pipes/${var.project}-pipe-techmize-v2-vehicle-basic-data-${terraform.workspace}"
   retention_in_days = "60"
 
   tags = {

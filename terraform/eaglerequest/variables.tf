@@ -20,7 +20,6 @@ variable "domain_name_map" {
   }
 }
 
-
 locals {
   domain_name       = lookup(var.domain_name_map, terraform.workspace, "sdx")
   route53_zone_name = lookup(var.route53_zone_map, terraform.workspace, "sdx")

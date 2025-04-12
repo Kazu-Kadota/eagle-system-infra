@@ -39,6 +39,18 @@ data "aws_iam_policy_document" "get_vehicle" {
       aws_dynamodb_table.finished_analysis_vehicle.arn,
     ]
   }
+
+  statement {
+    actions = [
+      "s3:GetObject",
+      "s3:ListBucket"
+    ]
+
+    resources = [
+      aws_s3_bucket.eaglerequest_vehicle_analysis_answer.arn,
+      "${aws_s3_bucket.eaglerequest_vehicle_analysis_answer.arn}/*"
+    ]
+  }
 }
 
 module "lambda_get_vehicle" {
@@ -48,10 +60,12 @@ module "lambda_get_vehicle" {
   project       = var.project
   policy_json   = data.aws_iam_policy_document.get_vehicle.json
   handler       = "src/controllers/${var.project}/consult/analysis/get-vehicle/index.handler"
+  timeout       = 30
 
   environment_variables = {
     AUTH_ES256_PRIVATE_KEY                              = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_VEHICLE          = aws_dynamodb_table.analysis_vehicle.name
     DYNAMO_TABLE_EAGLEREQUEST_FINISHED_ANALYSIS_VEHICLE = aws_dynamodb_table.finished_analysis_vehicle.name
+    S3_VEHICLE_ANALYSIS_ANSWER                          = aws_s3_bucket.eaglerequest_vehicle_analysis_answer.bucket
   }
 }

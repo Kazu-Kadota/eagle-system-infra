@@ -1,5 +1,5 @@
 resource "aws_iam_role" "main" {
-  name = "pipe-sqs-sfn-${var.project}-${var.name}-role"
+  name = "pipe-${var.project}-${var.name}-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -44,7 +44,7 @@ resource "aws_iam_policy" "pipe_policy" {
           "states:StartExecution"
         ],
         Effect = "Allow",
-        Resource = "arn:aws:states:${var.aws_region}:${var.account_id}:stateMachine:${var.project}-${var.name}-${terraform.workspace}"
+        Resource = "arn:aws:states:${var.aws_region}:${var.account_id}:stateMachine:${var.name}-${terraform.workspace}"
       }
     ]
   })

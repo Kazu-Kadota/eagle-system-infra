@@ -21,12 +21,12 @@ module "method_post_analysis_synthesis" {
   aws_region  = module.global_variables.aws_region
   http_method = "POST"
   lambda_arn  = module.lambda_analysis_vehicle_basic_data.arn
-  resource_id = aws_api_gateway_resource.analysis_vehicle_basic_data.id
+  resource_id = aws_api_gateway_resource.analysis_vehicle_basic_data.id // Resource está errado
   rest_api_id = aws_api_gateway_rest_api.main.id
 }
 
 # GET /synthesis
-module "method_post_analysis_synthesis" {
+module "method_get_analysis_synthesis" {
   source        = "../modules/api_gateway_lambda"
   account_id    = module.global_variables.account_id
   authorization = "NONE"
@@ -60,7 +60,7 @@ module "method_post_synthesis_receive" {
   aws_region       = module.global_variables.aws_region
   api_key_required = true
   http_method      = "POST"
-  lambda_arn       = module.lambda_synthesis_receive.arn
+  lambda_arn       = module.lambda_analysis_vehicle_basic_data.arn
   resource_id      = aws_api_gateway_resource.synthesis_receive.id
   rest_api_id      = aws_api_gateway_rest_api.main.id
 }

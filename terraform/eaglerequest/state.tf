@@ -123,15 +123,15 @@ data "aws_ssm_parameter" "scoreplus_event_bus_requestplus_third_party_analysis_a
 # Set manually from parameter store console because amplify is builded using AWS Interface
 # Need to know which is the api_key from console after creating it
 
-data "aws_ssm_parameter" "amplify_api_gateway_api_key_receive_synthesis" {
-  name = "/amplify/shared/d32bhwfrldbzw2/receive_synthesis_api_key"
-}
+# data "aws_ssm_parameter" "amplify_api_gateway_api_key_receive_synthesis" {
+#   name = "/amplify/shared/d32bhwfrldbzw2/receive_synthesis_api_key"
+# }
 
 # Transsat
 
 # AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/synthesis_endpoint' --type "SecureString" --value "https://ipa.sistemagr.com.br/ChatNimueService/GetRetornoPromptRdoAsync"
 # AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/synthesis_endpoint' --type "SecureString" --value "https://ipa.sistemagr.com.br/ChatNimueService/GetRetornoPromptRdoAsync"
 
-data "aws_ssm_parameter" "transsat_api_synthesis_endpoint" {
-  name = "/${terraform.workspace}/transsat/api/synthesis_endpoint"
-}
+# data "aws_ssm_parameter" "transsat_api_synthesis_endpoint" {
+#   name = "/${terraform.workspace}/transsat/api/synthesis_endpoint"
+# }

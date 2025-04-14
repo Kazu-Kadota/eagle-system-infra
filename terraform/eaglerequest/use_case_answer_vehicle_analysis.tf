@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "use_case_answer_vehicle_analysis" {
     ]
 
     resources = [
-      "${aws_s3_bucket.eaglerequest_person_analysis_answer.arn}/*"
+      "${aws_s3_bucket.eaglerequest_vehicle_analysis_answer.arn}/*"
     ]
   }
 }

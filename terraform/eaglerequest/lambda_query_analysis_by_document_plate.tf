@@ -63,6 +63,30 @@ data "aws_iam_policy_document" "query_analysis_by_document_plate" {
       "${aws_dynamodb_table.finished_analysis_vehicle.arn}/index/*"
     ]
   }
+
+  statement {
+    actions = [
+      "s3:GetObject",
+      "s3:ListBucket"
+    ]
+
+    resources = [
+      aws_s3_bucket.eaglerequest_person_analysis_answer.arn,
+      "${aws_s3_bucket.eaglerequest_person_analysis_answer.arn}/*"
+    ]
+  }
+
+  statement {
+    actions = [
+      "s3:GetObject",
+      "s3:ListBucket"
+    ]
+
+    resources = [
+      aws_s3_bucket.eaglerequest_vehicle_analysis_answer.arn,
+      "${aws_s3_bucket.eaglerequest_vehicle_analysis_answer.arn}/*"
+    ]
+  }
 }
 
 module "lambda_query_analysis_by_document_plate" {
@@ -79,5 +103,7 @@ module "lambda_query_analysis_by_document_plate" {
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_VEHICLE          = aws_dynamodb_table.analysis_vehicle.name
     DYNAMO_TABLE_EAGLEREQUEST_FINISHED_ANALYSIS_PERSON  = aws_dynamodb_table.finished_analysis_person.name
     DYNAMO_TABLE_EAGLEREQUEST_FINISHED_ANALYSIS_VEHICLE = aws_dynamodb_table.finished_analysis_vehicle.name
+    S3_PERSON_ANALYSIS_ANSWER                          = aws_s3_bucket.eaglerequest_person_analysis_answer.bucket
+    S3_VEHICLE_ANALYSIS_ANSWER                          = aws_s3_bucket.eaglerequest_vehicle_analysis_answer.bucket
   }
 }

@@ -24,7 +24,7 @@ variable "source_email_map" {
   type = map(string)
 
   default = {
-    sdx = "sdx.admin@systemeagle.com.br"
+    sdx = "admin@systemeagle.com.br"
     prd = "admin@systemeagle.com.br"
   }
 }
@@ -42,7 +42,7 @@ variable "url_map" {
   type = map(string)
 
   default = {
-    sdx = "https://www.sdx.systemeagle.com.br"
+    sdx = "https://sdx.systemeagle.com.br"
     prd = "https://www.systemeagle.com.br"
   }
 }

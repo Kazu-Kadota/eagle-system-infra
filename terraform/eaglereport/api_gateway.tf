@@ -63,8 +63,10 @@ resource "aws_api_gateway_deployment" "main" {
   stage_description = "Deploy em ${timestamp()}"
 
   depends_on = [
-    module.method_options_analysis,
+    module.method_get_synthesis,
     module.method_options_analysis_path_type,
+    module.method_options_analysis,
+    module.method_options_synthesis,
     module.method_post_analysis_path_type,
   ]
 

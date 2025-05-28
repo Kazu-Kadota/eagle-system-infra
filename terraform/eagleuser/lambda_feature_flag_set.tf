@@ -23,10 +23,12 @@ data "aws_iam_policy_document" "feature_flag_set" {
   statement {
     actions = [
       "dynamodb:PutItem",
+      "dynamodb:Query",
     ]
 
     resources = [
-      aws_dynamodb_table.feature_flag.arn
+      aws_dynamodb_table.feature_flag.arn,
+      "${aws_dynamodb_table.feature_flag.arn}/index/*",
     ]
   }
 }

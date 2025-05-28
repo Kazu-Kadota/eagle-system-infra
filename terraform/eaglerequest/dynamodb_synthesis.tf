@@ -3,6 +3,8 @@ resource "aws_dynamodb_table" "synthesis" {
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "request_id"
   range_key    = "synthesis_id"
+  deletion_protection_enabled = true
+
 
   point_in_time_recovery {
     enabled = true
@@ -23,6 +25,16 @@ resource "aws_dynamodb_table" "synthesis" {
     type = "S"
   }
 
+  attribute {
+    name = "document"
+    type = "S"
+  }
+
+  attribute {
+    name = "created_at"
+    type = "S"
+  }
+
   global_secondary_index {
     name            = "synthesis-id-index"
     hash_key        = "synthesis_id"
@@ -32,6 +44,14 @@ resource "aws_dynamodb_table" "synthesis" {
   global_secondary_index {
     name            = "company-name-index"
     hash_key        = "company_name"
+    range_key = "created_at"
+    projection_type = "ALL"
+  }
+
+  global_secondary_index {
+    name            = "document-index"
+    hash_key        = "document"
+    range_key = "created_at"
     projection_type = "ALL"
   }
 

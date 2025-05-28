@@ -132,6 +132,62 @@ data "aws_ssm_parameter" "scoreplus_event_bus_requestplus_third_party_analysis_a
 # AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/synthesis_endpoint' --type "SecureString" --value "https://ipa.sistemagr.com.br/ChatNimueService/GetRetornoPromptRdoAsync"
 # AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/synthesis_endpoint' --type "SecureString" --value "https://ipa.sistemagr.com.br/ChatNimueService/GetRetornoPromptRdoAsync"
 
-# data "aws_ssm_parameter" "transsat_api_synthesis_endpoint" {
-#   name = "/${terraform.workspace}/transsat/api/synthesis_endpoint"
-# }
+data "aws_ssm_parameter" "transsat_api_synthesis_endpoint" {
+  name = "/${terraform.workspace}/transsat/api/synthesis_endpoint"
+}
+
+# AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/postback_url' --type "SecureString" --value "https://request.api.sdx.systemeagle.com.br/synthesis/receive"
+# AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/postback_url' --type "SecureString" --value "https://request.api.systemeagle.com.br/synthesis/receive"
+
+data "aws_ssm_parameter" "transsat_api_postback_url" {
+  name = "/${terraform.workspace}/transsat/api/postback_url"
+}
+
+# AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/token_endpoint' --type "SecureString" --value "https://auth.sistemagr.com.br/realms/transsat/protocol/openid-connect/token"
+# AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/token_endpoint' --type "SecureString" --value "https://auth.sistemagr.com.br/realms/transsat/protocol/openid-connect/token"
+
+data "aws_ssm_parameter" "transsat_api_token_endpoint" {
+  name = "/${terraform.workspace}/transsat/api/token_endpoint"
+}
+
+# AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/token_client_id' --type "SecureString" --value "integracoes"
+# AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/token_client_id' --type "SecureString" --value "integracoes"
+
+data "aws_ssm_parameter" "transsat_api_token_client_id" {
+  name = "/${terraform.workspace}/transsat/api/token_client_id"
+}
+
+# AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/token_client_secret' --type "SecureString" --value "RosDZVSa6RgcMLmiEc2pThDzvt13UgCt"
+# AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/token_client_secret' --type "SecureString" --value "RosDZVSa6RgcMLmiEc2pThDzvt13UgCt"
+
+data "aws_ssm_parameter" "transsat_api_token_client_secret" {
+  name = "/${terraform.workspace}/transsat/api/token_client_secret"
+}
+
+# AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/token_grant_type' --type "SecureString" --value "password"
+# AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/token_grant_type' --type "SecureString" --value "password"
+
+data "aws_ssm_parameter" "transsat_api_token_grant_type" {
+  name = "/${terraform.workspace}/transsat/api/token_grant_type"
+}
+
+# AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/token_username' --type "SecureString" --value "reconshield.api@sistemagr.com.br"
+# AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/token_username' --type "SecureString" --value "reconshield.api@sistemagr.com.br"
+
+data "aws_ssm_parameter" "transsat_api_token_username" {
+  name = "/${terraform.workspace}/transsat/api/token_username"
+}
+
+# AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api/token_password' --type "SecureString" --value "reconshield.api1"
+# AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api/token_password' --type "SecureString" --value "reconshield.api1"
+
+data "aws_ssm_parameter" "transsat_api_token_password" {
+  name = "/${terraform.workspace}/transsat/api/token_password"
+}
+
+# AWS_PROFILE=eagle-back-sdx aws ssm put-parameter --region=us-east-1 --name '/sdx/transsat/api_key' --type "SecureString" --value "8WZDzextdQ4yqSvWxbFDD6qfxaoKVRoY4wK6JvxT"
+# AWS_PROFILE=eagle-back-prd aws ssm put-parameter --region=us-east-1 --name '/prd/transsat/api_key' --type "SecureString" --value "8WZDzextdQ4yqSvWxbFDD6qfxaoKVRoY4wK6JvxT"
+
+data "aws_ssm_parameter" "transsat_api_key" {
+  name = "/${terraform.workspace}/transsat/api_key"
+}

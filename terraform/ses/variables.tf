@@ -15,7 +15,7 @@ variable "email_name_map" {
   type = map(string)
 
   default = {
-    sdx = "sdx.admin@systemeagle.com.br"
+    sdx = "admin@systemeagle.com.br"
     prd = "admin@systemeagle.com.br"
   }
 }

@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "feature_flag_modify_allowance" {
+data "aws_iam_policy_document" "feature_flag_bff_set" {
   statement {
     actions = [
       "logs:CreateLogGroup",
@@ -22,25 +22,26 @@ data "aws_iam_policy_document" "feature_flag_modify_allowance" {
 
   statement {
     actions = [
-      "dynamodb:UpdateItem",
+      "dynamodb:PutItem",
+      "dynamodb:GetItem",
     ]
 
     resources = [
-      aws_dynamodb_table.feature_flag.arn
+      aws_dynamodb_table.feature_flag_bff.arn,
     ]
   }
 }
 
-module "lambda_feature_flag_modify_allowance" {
+module "lambda_feature_flag_bff_set" {
   source        = "../modules/lambda"
-  name          = "${var.project}-feature-flag-modify-allowance"
+  name          = "${var.project}-feature-flag-bff-set"
   source_bucket = module.global_variables.source_bucket
   project       = var.project
-  policy_json   = data.aws_iam_policy_document.feature_flag_modify_allowance.json
-  handler       = "src/controllers/${var.project}/feature-flag/modify-allowance/index.handler"
+  policy_json   = data.aws_iam_policy_document.feature_flag_bff_set.json
+  handler       = "src/controllers/${var.project}/feature-flag/bff/set/index.handler"
 
   environment_variables = {
     AUTH_ES256_PRIVATE_KEY              = data.aws_ssm_parameter.auth_ecdsa_private_key.value
-    DYNAMO_TABLE_EAGLEUSER_FEATURE_FLAG = aws_dynamodb_table.feature_flag.name
+    DYNAMO_TABLE_EAGLEUSER_FEATURE_FLAG_BFF = aws_dynamodb_table.feature_flag_bff.name
   }
 }

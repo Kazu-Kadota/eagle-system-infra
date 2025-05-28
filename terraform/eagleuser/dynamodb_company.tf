@@ -2,6 +2,7 @@ resource "aws_dynamodb_table" "company" {
   name         = "${var.project}-company-${terraform.workspace}"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "company_id"
+  deletion_protection_enabled = true
 
   point_in_time_recovery {
     enabled = true

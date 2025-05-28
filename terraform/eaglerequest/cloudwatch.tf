@@ -267,3 +267,75 @@ resource "aws_cloudwatch_log_group" "lambda_worker_techmize_new_v1_answer_analys
     Service = var.project
   }
 }
+
+resource "aws_cloudwatch_log_group" "lambda_analysis_synthesis" {
+  name              = "/aws/lambda/${var.project}-analysis-synthesis-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_get_synthesis" {
+  name              = "/aws/lambda/${var.project}-get-synthesis-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_transsat_receive_synthesis" {
+  name              = "/aws/lambda/${var.project}-transsat-receive-synthesis-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_change_analysis_answer_person" {
+  name              = "/aws/lambda/${var.project}-change-analysis-answer-person-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_change_analysis_answer_vehicle" {
+  name              = "/aws/lambda/${var.project}-change-analysis-answer-vehicle-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_delete_waiting_analysis_person" {
+  name              = "/aws/lambda/${var.project}-delete-waiting-analysis-person-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_delete_waiting_analysis_vehicle" {
+  name              = "/aws/lambda/${var.project}-delete-waiting-analysis-vehicle-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_delete_synthesis" {
+  name              = "/aws/lambda/${var.project}-delete-synthesis-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}

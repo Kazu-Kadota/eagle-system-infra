@@ -36,7 +36,8 @@ data "aws_iam_policy_document" "my_company" {
     ]
 
     resources = [
-      aws_dynamodb_table.feature_flag.arn
+      aws_dynamodb_table.feature_flag.arn,
+      "${aws_dynamodb_table.feature_flag.arn}/index/*",
     ]
   }
 }

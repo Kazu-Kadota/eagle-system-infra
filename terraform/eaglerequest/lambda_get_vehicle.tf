@@ -51,6 +51,16 @@ data "aws_iam_policy_document" "get_vehicle" {
       "${aws_s3_bucket.eaglerequest_vehicle_analysis_answer.arn}/*"
     ]
   }
+
+  statement {
+    actions = [
+      "dynamodb:GetItem",
+    ]
+
+    resources = [
+      data.terraform_remote_state.eagleuser.outputs.dynamodb_operator_companies_access_arn,
+    ]
+  }
 }
 
 module "lambda_get_vehicle" {
@@ -66,6 +76,7 @@ module "lambda_get_vehicle" {
     AUTH_ES256_PRIVATE_KEY                              = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_VEHICLE          = aws_dynamodb_table.analysis_vehicle.name
     DYNAMO_TABLE_EAGLEREQUEST_FINISHED_ANALYSIS_VEHICLE = aws_dynamodb_table.finished_analysis_vehicle.name
+    DYNAMO_TABLE_EAGLEUSER_OPERATOR_COMPANIES_ACCESS            = data.terraform_remote_state.eagleuser.outputs.dynamodb_operator_companies_access_name
     S3_VEHICLE_ANALYSIS_ANSWER                          = aws_s3_bucket.eaglerequest_vehicle_analysis_answer.bucket
   }
 }

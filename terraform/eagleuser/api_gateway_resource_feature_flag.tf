@@ -12,54 +12,154 @@ module "method_options_feature_flag" {
   resource_id = aws_api_gateway_resource.feature_flag.id
 }
 
-# /feature-flag/set
-resource "aws_api_gateway_resource" "feature_flag_set" {
+# /feature-flag/company
+resource "aws_api_gateway_resource" "feature_flag_company" {
   rest_api_id = aws_api_gateway_rest_api.main.id
   parent_id   = aws_api_gateway_resource.feature_flag.id
-  path_part   = "set"
+  path_part   = "company"
 }
 
-# OPTIONS /feature-flag/set
-module "method_options_feature_flag_set" {
+# OPTIONS /feature-flag/company
+module "method_options_feature_flag_company" {
   source      = "../modules/api_gateway_options"
   rest_api_id = aws_api_gateway_rest_api.main.id
-  resource_id = aws_api_gateway_resource.feature_flag_set.id
+  resource_id = aws_api_gateway_resource.feature_flag_company.id
 }
 
-# PUT /feature-flag/set
-module "method_put_feature_flag_set" {
+# GET /feature-flag/company
+module "method_get_feature_flag_company" {
+  source        = "../modules/api_gateway_lambda"
+  account_id    = module.global_variables.account_id
+  authorization = "NONE"
+  aws_region    = module.global_variables.aws_region
+  http_method   = "GET"
+  lambda_arn    = module.lambda_feature_flag_list.arn
+  resource_id   = aws_api_gateway_resource.feature_flag_company.id
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+}
+
+# POST /feature-flag/company
+module "method_post_feature_flag_company" {
+  source        = "../modules/api_gateway_lambda"
+  account_id    = module.global_variables.account_id
+  authorization = "NONE"
+  aws_region    = module.global_variables.aws_region
+  http_method   = "POST"
+  lambda_arn    = module.lambda_feature_flag_update.arn
+  resource_id   = aws_api_gateway_resource.feature_flag_company.id
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+}
+
+# PUT /feature-flag/company
+module "method_put_feature_flag_company" {
   source        = "../modules/api_gateway_lambda"
   account_id    = module.global_variables.account_id
   authorization = "NONE"
   aws_region    = module.global_variables.aws_region
   http_method   = "PUT"
   lambda_arn    = module.lambda_feature_flag_set.arn
-  resource_id   = aws_api_gateway_resource.feature_flag_set.id
+  resource_id   = aws_api_gateway_resource.feature_flag_company.id
   rest_api_id   = aws_api_gateway_rest_api.main.id
 }
 
-# /feature-flag/modify-allowance
-resource "aws_api_gateway_resource" "feature_flag_modify_allowance" {
+# /feature-flag/company/delete
+resource "aws_api_gateway_resource" "feature_flag_company_delete" {
   rest_api_id = aws_api_gateway_rest_api.main.id
-  parent_id   = aws_api_gateway_resource.feature_flag.id
-  path_part   = "modify-allowance"
+  parent_id   = aws_api_gateway_resource.feature_flag_company.id
+  path_part   = "delete"
 }
 
-# OPTIONS /feature-flag/modify-allowance
-module "method_options_feature_flag_modify_allowance" {
+# OPTIONS /feature-flag/company/delete
+module "method_options_feature_flag_company_delete" {
   source      = "../modules/api_gateway_options"
   rest_api_id = aws_api_gateway_rest_api.main.id
-  resource_id = aws_api_gateway_resource.feature_flag_modify_allowance.id
+  resource_id = aws_api_gateway_resource.feature_flag_company_delete.id
 }
 
-# POST /feature-flag/modify-allowance
-module "method_post_feature_flag_modify_allowance" {
+# POST /feature-flag/company/delete
+module "method_post_feature_flag_company_delete" {
   source        = "../modules/api_gateway_lambda"
   account_id    = module.global_variables.account_id
   authorization = "NONE"
   aws_region    = module.global_variables.aws_region
   http_method   = "POST"
-  lambda_arn    = module.lambda_feature_flag_modify_allowance.arn
-  resource_id   = aws_api_gateway_resource.feature_flag_modify_allowance.id
+  lambda_arn    = module.lambda_feature_flag_delete.arn
+  resource_id   = aws_api_gateway_resource.feature_flag_company_delete.id
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+}
+
+# /feature-flag/bff
+resource "aws_api_gateway_resource" "feature_flag_bff" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  parent_id   = aws_api_gateway_resource.feature_flag.id
+  path_part   = "bff"
+}
+
+# OPTIONS /feature-flag/bff
+module "method_options_feature_flag_bff" {
+  source      = "../modules/api_gateway_options"
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  resource_id = aws_api_gateway_resource.feature_flag_bff.id
+}
+
+# GET /feature-flag/bff
+module "method_get_feature_flag_bff" {
+  source        = "../modules/api_gateway_lambda"
+  account_id    = module.global_variables.account_id
+  authorization = "NONE"
+  aws_region    = module.global_variables.aws_region
+  http_method   = "GET"
+  lambda_arn    = module.lambda_feature_flag_bff_list.arn
+  resource_id   = aws_api_gateway_resource.feature_flag_bff.id
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+}
+
+# POST /feature-flag/bff
+module "method_post_feature_flag_bff" {
+  source        = "../modules/api_gateway_lambda"
+  account_id    = module.global_variables.account_id
+  authorization = "NONE"
+  aws_region    = module.global_variables.aws_region
+  http_method   = "POST"
+  lambda_arn    = module.lambda_feature_flag_bff_update.arn
+  resource_id   = aws_api_gateway_resource.feature_flag_bff.id
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+}
+
+# PUT /feature-flag/bff
+module "method_put_feature_flag_bff" {
+  source        = "../modules/api_gateway_lambda"
+  account_id    = module.global_variables.account_id
+  authorization = "NONE"
+  aws_region    = module.global_variables.aws_region
+  http_method   = "PUT"
+  lambda_arn    = module.lambda_feature_flag_bff_set.arn
+  resource_id   = aws_api_gateway_resource.feature_flag_bff.id
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+}
+
+# /feature-flag/bff/delete
+resource "aws_api_gateway_resource" "feature_flag_bff_delete" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  parent_id   = aws_api_gateway_resource.feature_flag_bff.id
+  path_part   = "delete"
+}
+
+# OPTIONS /feature-flag/bff/delete
+module "method_options_feature_flag_bff_delete" {
+  source      = "../modules/api_gateway_options"
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  resource_id = aws_api_gateway_resource.feature_flag_bff_delete.id
+}
+
+# POST /feature-flag/bff/delete
+module "method_post_feature_flag_bff_delete" {
+  source        = "../modules/api_gateway_lambda"
+  account_id    = module.global_variables.account_id
+  authorization = "NONE"
+  aws_region    = module.global_variables.aws_region
+  http_method   = "POST"
+  lambda_arn    = module.lambda_feature_flag_bff_delete.arn
+  resource_id   = aws_api_gateway_resource.feature_flag_bff_delete.id
   rest_api_id   = aws_api_gateway_rest_api.main.id
 }

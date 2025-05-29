@@ -21,3 +21,11 @@ output "dynamodb_feature_flag_arn" {
 output "dynamodb_feature_flag_name" {
   value = aws_dynamodb_table.feature_flag.name
 }
+
+output "dynamodb_operator_companies_access_arn" {
+  value = aws_dynamodb_table.operator_companies_access.arn
+}
+
+output "dynamodb_operator_companies_access_name" {
+  value = aws_dynamodb_table.operator_companies_access.name
+}

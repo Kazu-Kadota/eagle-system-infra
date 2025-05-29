@@ -3,6 +3,7 @@ resource "aws_dynamodb_table" "analysis_vehicle" {
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "request_id"
   range_key    = "vehicle_id"
+  deletion_protection_enabled = true
 
   point_in_time_recovery {
     enabled = true

@@ -15,3 +15,12 @@ resource "aws_cloudwatch_log_group" "lambda_analysis" {
     Service = var.project
   }
 }
+
+resource "aws_cloudwatch_log_group" "lambda_synthesis" {
+  name              = "/aws/lambda/${var.project}-synthesis-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}

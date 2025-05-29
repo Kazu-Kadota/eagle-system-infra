@@ -88,7 +88,7 @@ module "lambda_worker_techmize_new_v1_answer_analysis_person_process" {
   project       = var.project
   policy_json   = data.aws_iam_policy_document.worker_techmize_new_v1_answer_analysis_person_process.json
   handler       = "src/worker/techmize/new-v1/answer-analysis/person/process/index.handler"
-  timeout       = 20
+  timeout       = 60
 
   environment_variables = merge(
     local.use_case_answer_person_analysis_environment_variables,

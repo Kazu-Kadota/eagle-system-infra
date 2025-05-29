@@ -88,8 +88,116 @@ resource "aws_cloudwatch_log_group" "feature_flag_set" {
   }
 }
 
-resource "aws_cloudwatch_log_group" "feature_flag_modify_allowance" {
-  name              = "/aws/lambda/${var.project}-feature-flag-modify-allowance-${terraform.workspace}"
+resource "aws_cloudwatch_log_group" "feature_flag_update" {
+  name              = "/aws/lambda/${var.project}-feature-flag-update-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "operator_companies_access_register_companies" {
+  name              = "/aws/lambda/${var.project}-operator-companies-access-register-companies-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "operator_companies_access_delete_companies" {
+  name              = "/aws/lambda/${var.project}-operator-companies-access-delete-companies-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "operator_companies_access_delete_users" {
+  name              = "/aws/lambda/${var.project}-operator-companies-access-delete-users-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "list_users" {
+  name              = "/aws/lambda/${var.project}-list-users-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "feature_flag_list" {
+  name              = "/aws/lambda/${var.project}-feature-flag-list-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "feature_flag_delete" {
+  name              = "/aws/lambda/${var.project}-feature-flag-delete-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "feature_flag_bff_set" {
+  name              = "/aws/lambda/${var.project}-feature-flag-bff-set-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "feature_flag_bff_update" {
+  name              = "/aws/lambda/${var.project}-feature-flag-bff-update-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "feature_flag_bff_list" {
+  name              = "/aws/lambda/${var.project}-feature-flag-bff-list-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "feature_flag_bff_delete" {
+  name              = "/aws/lambda/${var.project}-feature-flag-bff-delete-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_operator_companies_access_get" {
+  name              = "/aws/lambda/${var.project}-operator-companies-access-get-${terraform.workspace}"
+  retention_in_days = "60"
+
+  tags = {
+    Service = var.project
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_operator_companies_access_list" {
+  name              = "/aws/lambda/${var.project}-operator-companies-access-list-${terraform.workspace}"
   retention_in_days = "60"
 
   tags = {

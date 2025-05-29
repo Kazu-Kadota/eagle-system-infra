@@ -3,6 +3,7 @@ resource "aws_dynamodb_table" "finished_analysis_person" {
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "request_id"
   range_key    = "person_id"
+  deletion_protection_enabled = true
 
   point_in_time_recovery {
     enabled = true

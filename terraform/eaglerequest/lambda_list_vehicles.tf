@@ -29,6 +29,16 @@ data "aws_iam_policy_document" "list_vehicles" {
       aws_dynamodb_table.analysis_vehicle.arn
     ]
   }
+
+  statement {
+    actions = [
+      "dynamodb:GetItem",
+    ]
+
+    resources = [
+      data.terraform_remote_state.eagleuser.outputs.dynamodb_operator_companies_access_arn,
+    ]
+  }
 }
 
 module "lambda_list_vehicles" {
@@ -42,5 +52,6 @@ module "lambda_list_vehicles" {
   environment_variables = {
     AUTH_ES256_PRIVATE_KEY                     = data.aws_ssm_parameter.auth_ecdsa_private_key.value
     DYNAMO_TABLE_EAGLEREQUEST_ANALYSIS_VEHICLE = aws_dynamodb_table.analysis_vehicle.name
+    DYNAMO_TABLE_EAGLEUSER_OPERATOR_COMPANIES_ACCESS            = data.terraform_remote_state.eagleuser.outputs.dynamodb_operator_companies_access_name
   }
 }

@@ -3,6 +3,7 @@ resource "aws_dynamodb_table" "feature_flag" {
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "company_id"
   range_key    = "feature_flag"
+  deletion_protection_enabled = true
 
   point_in_time_recovery {
     enabled = true

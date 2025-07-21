@@ -45,8 +45,8 @@ resource "aws_sfn_state_machine" "sfn_techmize_new_v1_person_basic_data" {
         Type = "Choice",
         Choices = [
           {
-            Variable     = "$[0].message",
-            StringEquals = "A consulta está sendo processada. Tente novamente mais tarde!",
+            Variable     = "$[0].code",
+            StringEquals = "0",
             Next         = "Wait Before Checking"
           }
         ],

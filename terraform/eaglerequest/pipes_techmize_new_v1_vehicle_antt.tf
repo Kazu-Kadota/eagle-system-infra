@@ -46,7 +46,7 @@ resource "aws_sfn_state_machine" "sfn_techmize_new_v1_vehicle_antt" {
         Choices = [
           {
             Variable     = "$[0].code",
-            StringEquals = "0",
+            NumericEquals = 0,
             Next         = "Wait Before Checking"
           }
         ],
